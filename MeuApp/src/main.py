@@ -21,13 +21,13 @@ def main(page: ft.Page):
         )
 
         page.add(
-            ft.Text("HOME PAGE")
+            ft.Text("PÁGINA INICIAL")
         )
 
         page.update()
 
     def acesso_login(e):
-        if username.value == "admin" and password.value == "123":
+        if usuario.value == "admin" and senha.value == "123":
             page.controls.clear()
             tela_inicial()
 
@@ -50,7 +50,7 @@ def main(page: ft.Page):
             page.update()
 
 
-    username = ft.TextField(
+    usuario = ft.TextField(
         label='Usuário',
         prefix_icon=ft.Icons.PERSON,
         bgcolor=ft.Colors.WHITE,
@@ -60,7 +60,7 @@ def main(page: ft.Page):
         width=300,
     )
 
-    password = ft.TextField(
+    senha = ft.TextField(
         label="Senha",
         prefix_icon=ft.Icons.PERSON,
         bgcolor=ft.Colors.WHITE,
@@ -72,7 +72,7 @@ def main(page: ft.Page):
         width=300
     )
 
-    button_login = ft.ElevatedButton(
+    botao_entrar = ft.ElevatedButton(
         text="Entrar",
         bgcolor=ft.Colors.BLUE,
         color=ft.Colors.WHITE,
@@ -83,7 +83,7 @@ def main(page: ft.Page):
     page.add(
         ft.Container(
             content=ft.Column(
-                controls=[username, password, button_login],
+                controls=[usuario, senha, botao_entrar],
                 alignment=ft.MainAxisAlignment.CENTER,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER
             )

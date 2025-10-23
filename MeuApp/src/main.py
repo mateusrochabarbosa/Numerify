@@ -1,9 +1,35 @@
 import flet as ft
+import re
+import json
+import os
+
+USUARIOS_FILE = "usuarios.json"
+
+def carregar_usuarios():
+    if os.path.exists(USUARIOS_FILE):
+        with open(USUARIOS_FILE, 'r') as f:
+            return json.load(f)
+    return {}
+
+def salvar_usuario(usuarios):
+    with open(USUARIOS_FILE, 'w') as f:
+        json.dump(usuarios, f)
+
+def validar_senha(senha):
+    if len(senha) < 8:
+        return False, "A senha deve ter, pelo menos, 8 caracteres"
+    if not re.search(r'\d', senha):
+        return False, "A senha deve ter, pelo menos, 1 número"
+    if not re.search(r'[!?@#$%&^*,.:"{}()|<>]', senha):
+        return False, "A senha deve ter, pelo menos, um caracter especial"
+    return True, "senha válida"
 
 def main(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.padding = 0
+
+    usuarios = carregar_usuarios()
 
     def tela_inicial():
         page.appbar = ft.AppBar(

@@ -54,6 +54,11 @@ def tela_cadastro(page: ft.Page):
         page.overlay.append(verificar)
         verificar.open = True
         page.update()
+    
+    def voltar_login(e):
+        page.clean()
+        from main import main as tela_login
+        tela_login(page)
 
     usuario = ft.TextField(
         label='Usuário',
@@ -84,11 +89,19 @@ def tela_cadastro(page: ft.Page):
         width=300,
         on_click=adicionar_usuario
     )
+    
+    botao_voltar = ft.ElevatedButton(
+        text="Voltar para Login",
+        bgcolor=ft.Colors.GREY,
+        color=ft.Colors.WHITE,
+        width=300,
+        on_click=voltar_login
+    )
 
     page.add(
         ft.Container(
             content=ft.Column(
-                controls=[usuario, senha, botao_cadastro],
+                controls=[usuario, senha, botao_cadastro, botao_voltar],
                 alignment=ft.MainAxisAlignment.CENTER,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER
             )

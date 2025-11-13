@@ -12,28 +12,28 @@ CONTEUDOS = {
         "descricao": "Encontra raízes de funções contínuas",
         "dificuldade": "Iniciante",
         "icone": ft.Icons.FUNCTIONS,
-        "cor": ft.Colors.BLUE
+        "cor": ft.Colors.GREEN
     },
     "newton_raphson": {
         "titulo": "Método de Newton-Raphson",
         "descricao": "Método iterativo para encontrar raízes",
         "dificuldade": "Intermediário",
         "icone": ft.Icons.TRENDING_UP,
-        "cor": ft.Colors.GREEN
+        "cor": ft.Colors.YELLOW
     },
     "secante": {
         "titulo": "Método da Secante",
         "descricao": "Aproximação numérica sem derivada",
         "dificuldade": "Intermediário",
         "icone": ft.Icons.SHOW_CHART,
-        "cor": ft.Colors.ORANGE
+        "cor": ft.Colors.YELLOW
     },
     "gauss": {
         "titulo": "Eliminação de Gauss",
         "descricao": "Resolução de sistemas lineares",
         "dificuldade": "Avançado",
         "icone": ft.Icons.GRID_ON,
-        "cor": ft.Colors.PURPLE
+        "cor": ft.Colors.RED
     }
 }
 
@@ -136,9 +136,11 @@ def main(page: ft.Page):
                             ft.Container(
                                 content=ft.Text(
                                     conteudo["dificuldade"],
-                                    size=12,
+                                    size=14,
                                     color=ft.Colors.BLACK,
-                                    weight=ft.FontWeight.BOLD
+                                    weight=ft.FontWeight.BOLD,
+                                    width=90,
+                                    text_align=ft.TextAlign.CENTER
                                 ),
                                 padding=ft.padding.symmetric(horizontal=10, vertical=5),
                                 border_radius=10,
@@ -179,8 +181,9 @@ def main(page: ft.Page):
                 ],
                 alignment=ft.MainAxisAlignment.START,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                scroll=ft.ScrollMode.ADAPTIVE),
+                scroll=ft.ScrollMode.AUTO),
                 padding=20,
+                expand=True,
                 margin=10
             )
         )
@@ -214,8 +217,8 @@ def main(page: ft.Page):
                         content=ft.Container(
                             content=ft.Column([
                                 ft.ListTile(
-                                    leading=ft.Icon(conteudo["icone"], color=conteudo["cor"]),
-                                    title=ft.Text(conteudo["titulo"], size=18, weight=ft.FontWeight.BOLD),
+                                    leading=ft.Icon(conteudo["icone"], size=50, color=conteudo["cor"]),
+                                    title=ft.Text(conteudo["titulo"], size=20, weight=ft.FontWeight.BOLD),
                                     subtitle=ft.Text(f"Dificuldade: {conteudo['dificuldade']}"),
                                 ),
                             ]),
@@ -225,11 +228,11 @@ def main(page: ft.Page):
                     
                     ft.Container(
                         content=ft.Column([
-                            ft.Text("Introdução", size=16, weight=ft.FontWeight.BOLD),
+                            ft.Text("Introdução", size=20, weight=ft.FontWeight.BOLD),
                             ft.Text(
                                 "O Método da Bissecção é um algoritmo numérico simples para encontrar "
                                 "raízes de funções contínuas. É baseado no Teorema do Valor Intermediário.",
-                                size=14,
+                                size=16,
                                 text_align=ft.TextAlign.JUSTIFY
                             ),
                         ]),
@@ -240,40 +243,43 @@ def main(page: ft.Page):
                     
                     ft.Container(
                         content=ft.Column([
-                            ft.Text("Como Funciona", size=16, weight=ft.FontWeight.BOLD),
+                            ft.Text("Como Funciona", size=20, weight=ft.FontWeight.BOLD),
                             ft.Text(
                                 "1. Escolha um intervalo [a, b] onde f(a) * f(b) < 0\n"
                                 "2. Calcule o ponto médio c = (a + b) / 2\n"
                                 "3. Verifique em qual subintervalo está a raiz\n"
                                 "4. Repita até atingir a precisão desejada",
-                                size=14
+                                size=16
                             ),
                         ]),
                         padding=15,
                         bgcolor=ft.Colors.GREEN_50,
-                        border_radius=10
+                        border_radius=10,
+                        width=400
                     ),
                     
                     ft.Container(
                         content=ft.Column([
-                            ft.Text("Exemplo Prático", size=16, weight=ft.FontWeight.BOLD),
-                            ft.Text("Encontrar raiz de f(x) = x² - 4 no intervalo [1, 3]", size=14),
-                            ft.Text("Iteração 1: c = (1 + 3)/2 = 2, f(2) = 0 → Raiz encontrada!", size=12),
+                            ft.Text("Exemplo Prático", size=20, weight=ft.FontWeight.BOLD),
+                            ft.Text("Encontrar raiz de f(x) = x² - 4 no intervalo [1, 3]", size=16),
+                            ft.Text("Iteração 1: c = (1 + 3)/2 = 2, f(2) = 0 → Raiz encontrada!", size=16),
                         ]),
                         padding=15,
                         bgcolor=ft.Colors.ORANGE_50,
-                        border_radius=10
+                        border_radius=10,
+                        width=400
                     ),
                     
                     ft.Container(
                         content=ft.Column([
-                            ft.Text("Vantagens e Desvantagens", size=16, weight=ft.FontWeight.BOLD),
-                            ft.Text("Sempre converge\nFácil implementação\nRobusto", size=12),
-                            ft.Text("Convergência lenta\nPrecisa de intervalo inicial", size=12),
+                            ft.Text("Vantagens e Desvantagens", size=20, weight=ft.FontWeight.BOLD),
+                            ft.Text("Sempre converge\nFácil implementação\nRobusto", size=16),
+                            ft.Text("Convergência lenta\nPrecisa de intervalo inicial", size=16),
                         ]),
                         padding=15,
                         bgcolor=ft.Colors.PURPLE_50,
-                        border_radius=10
+                        border_radius=10,
+                        width=400
                     ),
                     
                     ft.Row([
@@ -292,6 +298,7 @@ def main(page: ft.Page):
                 ],
                 spacing=15,
                 scroll=ft.ScrollMode.ADAPTIVE),
+                expand=True,
                 padding=20
             )
         )
